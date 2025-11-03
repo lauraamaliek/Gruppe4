@@ -11,44 +11,9 @@
   <button onclick="spilGenre('jazz')">Jazz</button>
 
 
-  <script>
-    let musikData = null;
-
-    // Hent JSON-filen, når siden loader
-    window.addEventListener('DOMContentLoaded', () => {
-      fetch('albums.json')
-        .then(response => response.json())
-        .then(data => {
-          musikData = data;
-          console.log("Musikdata hentet:", musikData);
-        })
-        .catch(err => console.error("Fejl ved hentning af JSON:", err));
-    });
-
-    // Funktion til at vise sange efter genre
-    function spilGenre(genre) {
-      const output = document.getElementById('output');
-      output.innerHTML = `<h2>${genre.toUpperCase()} 🎶</h2>`;
-
-      if (!musikData) {
-        output.innerHTML += "<p>Indlæser data... prøv igen om lidt.</p>";
-        return;
-      }
-
-      // Filtrér alle tracks i alle albums efter genre
-      const tracks = musikData.albums.flatMap(album => 
-        album.tracks.filter(track => track.genre.name.toLowerCase() === genre.toLowerCase())
-      );
-
-      if (tracks.length === 0) {
-        output.innerHTML += "<p>Ingen sange fundet i denne genre.</p>";
-        return;
-      }
-
-      // Vis alle fundne tracks
-      tracks.forEach(track => {
-        output.innerHTML += `<p>▶ ${track.title}</p>`;
-      });
+  <script src="albums.json">
+    function spilGenre(){
+        
     }
 
   </script>
