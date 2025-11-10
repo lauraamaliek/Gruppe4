@@ -14,7 +14,7 @@
     #genre-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 15 px;
+      gap: 10px 15px;
       position: fixed;
       justify-content: center;
       flex-direction: column;       /* Læg knapperne lodret */
@@ -41,7 +41,7 @@
     }
 
     button:hover {
-      background-color: rgb(124, 169, 241)b;
+      background-color: rgb(124, 169, 241);
     }
     #output {
       margin-top: 30px;
@@ -59,6 +59,18 @@
   padding: 20px;
   font-family: sans-serif;
   box-sizing: border-box;
+}
+
+#kurv {
+  position: fixed;
+  bottom: 0;
+  left: 200px; /* så den ikke overlapper sidebar */
+  right: 0;
+  background-color: #2c2a2ad1;
+  padding: 15px;
+  border-top: 2px solid #90b6f4;
+  text-align: center;
+  color: white;
 }
 </style>
 </head>
@@ -94,9 +106,14 @@
 
   <div id="output"></div>
 
+<div id="kurv">
+    <h3>🛒 Din kurv</h3>
+    <div id="cart-list">Ingen sange valgt endnu</div>
+</div>
 
   <script>
     let musikData = null;
+    const kurv = []; //tomt array til valgte sange 
 
     window.addEventListener('DOMContentLoaded', () => {
         fetch('albums.json')
@@ -134,8 +151,28 @@
 
       // Vis alle fundne tracks
         tracks.forEach(track => {
-            output.innerHTML += `<p>${track.title}— <em>${track.artist}</em></p>`;
+            const div = document.createElement("div");
+            div.className = "song";
+            div.innerHTML = `
+                <span>${track.title} — <em>${track.artist}</em></span>
+                <button onclick="tilføjTilKurv('${track.title}', '${track.artist}')">➕</button>
+                `;
+            output.appendChild(div);
         });
+    }
+
+   function tilføjTilKurv(titel, kunstner){
+        kurv.push({titel, kunstner});
+        opdaterKurv();
+    }
+
+    function opdaterKurv(){
+        const cartList = document.getElementById("cart-list");
+        if (kurv.length === 0) {
+            cartList.textContent = "Ingen sange valgt endnu";
+            return;
+        }
+        cartList.innerHTML = kurv.map(item => `🎵 ${item.titel} — <em>${item.kunstner}</em>`).join("<br>");
     }
 
   </script>
@@ -144,8 +181,8 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #000000;
-  color: #f58d32;
+  background: #2c2a2ad1;
+  color: rgb(144, 182, 244);
   overflow: hidden;
   white-space: nowrap;
   padding: 10px 0;
@@ -170,6 +207,5 @@
     Spiller nu: | Justin Bieber: Baby | Næste sange i kø: | Michael Jackson: Thriller (3 minutter) | Ukendt Kunstner: Stein Bagger (7 minutter) | Taylor Swift: love Story (10 minutter) | Rihanna: Disturbia (13 minutter) | Kendrick Lamar: Not Like Us (17 minutter) | Flo Rida: Wild Ones  (20 minutter)
   </div>
 </div>
-  
 </body>
 </html>
