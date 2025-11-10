@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tryk her for at vælge Musik</title>
-      <title>Baggrundsbillede på hele siden</title>
+    <title>Baggrundsbillede på hele siden</title>
     <style>
 
         body {
@@ -13,10 +13,11 @@
             background-color: #826a6a;
             padding-top: 50px;
             background-image: url(https://t3.ftcdn.net/jpg/17/65/80/82/240_F_1765808293_pkibCGIb5M7rerYSKsk3zT26qYbA3Zas.jpg);
+            
             width: 100%;
-            /* background-repeat: no-repeat;
-            background-size: cover;*/
-    
+            background-repeat: no-repeat;
+            background-size: cover;
+            /*opacity: 0.5;*/
 
         }
         h1 {
@@ -40,12 +41,46 @@
             color: #4CAF50;
         }
         
+        
 
     </style>
 </head>
 <body>
 
     <a href="pick_genre_knapper.html" class="clickable-text">Tryk her for at vælge Musik</a>
+
+
+    <div class="ticker">
+  <div class="ticker-content">
+    Spiller nu: | Justin Bieber: Baby | Næste sange i kø: | Michael Jackson: Thriller (3 minutter) | Ukendt Kunstner: Stein Bagger (7 minutter) | Taylor Swift: love Story (10 minutter) | Rihanna: Disturbia (13 minutter) | Kendrick Lamar: Not Like Us (17 minutter) | Flo Rida: Wild Ones  (20 minutter)
+  </div>
+</div>
+
+<style>
+.ticker {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000000;
+  color: #f58d32;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+.ticker-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker 40s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+</style>
 
 </body>
 </html>
