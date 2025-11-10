@@ -12,14 +12,18 @@
       color: white;
     }
     #genre-container {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 15 px;
+      position: fixed;
       justify-content: center;
       flex-direction: column;       /* Læg knapperne lodret */
       align-items: flex-end;        /* Justér til højre */
-      /*position: fixed;              /* Gør den fast i højre side */
-      /*right: 20px;                  /* Afstand fra højre kant */
+      position: fixed;              /* Gør den fast i højre side */
+      right: 20px;                  /* Afstand fra højre kant */
       top: 30px;                   /* Lidt ned fra toppen */
       gap: 10px;                    /* Lidt luft imellem knapperne */
+      width: 280px;
     }
 
     /* knap styling*/
