@@ -10,6 +10,8 @@
   <button onclick="spilGenre('pop')">Pop</button>
   <button onclick="spilGenre('jazz')">Jazz</button>
 
+  <div id="output"></div>
+
 
   <script>
     let musikData = null;
@@ -24,7 +26,7 @@
         .catch(err => console.error("Fejl ved hentning af JSON:", err));
     });
 
-    function spilGenre(){
+    function spilGenre(genre){
         const output = document.getElementById('output');
         output.innerHTML = `<h2>${genre.toUpperCase()} 🎶</h2>`;
 
