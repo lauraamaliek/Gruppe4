@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vælg musik</title>
+    <style>body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #d2caca;
+      color: white;
+    }
+    #genre-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;       /* Læg knapperne lodret */
+      align-items: flex-end;        /* Justér til højre */
+      /*position: fixed;              /* Gør den fast i højre side */
+      /*right: 20px;                  /* Afstand fra højre kant */
+      top: 30px;                   /* Lidt ned fra toppen */
+      gap: 10px;                    /* Lidt luft imellem knapperne */
+    }
+
+    /* knap styling*/
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgb(144, 182, 244);
+      color: white;
+      width: 120px;                 /* Ens bredde på knapperne */
+      text-align: center;            /* Tekst rykket mod højre */
+    }
+
+    button:hover {
+      background-color: rgb(124, 169, 241)b;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 18px;
+    }</style>
 </head>
 <body>
+<div id="genre-container">
   <button onclick="spilGenre('rock')">Rock</button>
   <button onclick="spilGenre('pop')">Pop</button>
   <button onclick="spilGenre('jazz')">Jazz</button>
@@ -26,8 +66,7 @@
   <button onclick="spilGenre('alternative')">Alternative</button>
   <button onclick="spilGenre('classical')">Classical</button>
   <button onclick="spilGenre('Opera')">Opera</button>
-
-
+</div>
 
   <div id="output"></div>
 
