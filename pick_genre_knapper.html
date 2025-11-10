@@ -12,7 +12,10 @@
       color: white;
     }
     #genre-container {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 15 px;
+      position: fixed;
       justify-content: center;
       flex-direction: column;       /* Læg knapperne lodret */
       align-items: flex-end;        /* Justér til højre */
@@ -22,6 +25,16 @@
       gap: 10px;                    /* Lidt luft imellem knapperne */
     }
 
+
+        #genre-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;  /* 2 kolonner */
+      gap: 10px 15px;                  /* rækkeafstand / kolonneafstand */
+      position: fixed;
+      right: 20px;
+      top: 100px;
+      width: 280px;                    /* samlet bredde til to kolonner */
+    }
     /* knap styling*/
     button {
       margin: 10px;
