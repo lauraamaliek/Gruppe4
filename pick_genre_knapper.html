@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+    <title>Vælg musik</title>
+    <style>body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #d2caca;
+      color: white;
+    }
+    #genre-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 15 px;
+      position: fixed;
+      justify-content: center;
+      flex-direction: column;       /* Læg knapperne lodret */
+      align-items: flex-end;        /* Justér til højre */
+      position: fixed;              /* Gør den fast i højre side */
+      right: 20px;                  /* Afstand fra højre kant */
+      top: 30px;                   /* Lidt ned fra toppen */
+      gap: 10px;                    /* Lidt luft imellem knapperne */
+      width: 280px;
+    }
+
+    /* knap styling*/
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgb(144, 182, 244);
+      color: white;
+      width: 120px;                 /* Ens bredde på knapperne */
+      text-align: center;            /* Tekst rykket mod højre */
+    }
+
+    button:hover {
+      background-color: rgb(124, 169, 241)b;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -25,11 +68,29 @@
   <h3>Pris:</h3>
   <p>1 sang = 2 kr. <br> 3 sange = 5 kr. <br> <br> <br> Max 3 sange pr. ordre  </p>
 </div>
-</head>
-<body>
+
+<div id="genre-container">
   <button onclick="spilGenre('rock')">Rock</button>
   <button onclick="spilGenre('pop')">Pop</button>
   <button onclick="spilGenre('jazz')">Jazz</button>
+  <button onclick="spilGenre('metal')">Metal</button>
+  <button onclick="spilGenre('alternative & punk')">Alternative & Punk</button>
+  <button onclick="spilGenre('rock and roll')">Rock and Roll</button>
+  <button onclick="spilGenre('blues')">Blues</button>
+  <button onclick="spilGenre('latin')">Latin</button>
+  <button onclick="spilGenre('reggae')">Reggae</button>
+  <button onclick="spilGenre('soundtrack')">Soundtrack</button>
+  <button onclick="spilGenre('bossa nova')">Bossa Nova</button>
+  <button onclick="spilGenre('easy listening')">Easy listening</button>
+  <button onclick="spilGenre('Heavy Metal')">Heavy Metal</button>
+  <button onclick="spilGenre('r&b/soul')">R&B/Soul</button>
+  <button onclick="spilGenre('electronica/dance')">Electronica & Dance</button>
+  <button onclick="spilGenre('World')">World</button>
+  <button onclick="spilGenre('hip hop/rap')">Hip Hop/Rap</button>
+  <button onclick="spilGenre('alternative')">Alternative</button>
+  <button onclick="spilGenre('classical')">Classical</button>
+  <button onclick="spilGenre('Opera')">Opera</button>
+</div>
 
   <div id="output"></div>
 
