@@ -36,9 +36,14 @@
         }
 
       // Filtrér alle tracks i alle albums efter genre
-        const tracks = musikData.albums.flatMap(album => 
-        album.tracks.filter(track => track.genre.name.toLowerCase() === genre.toLowerCase())
-        );
+        const tracks = musikData.albums.flatMap(album =>
+        album.tracks
+          .filter(track => track.genre.name.toLowerCase() === genre.toLowerCase())
+          .map(track => ({
+            title: track.title,
+            artist: album.artist.name // hent kunstnernavnet fra albummet
+          }))
+      );
 
         if (tracks.length === 0) {
             output.innerHTML += "<p>Ingen sange fundet i denne genre.</p>";
@@ -47,7 +52,7 @@
 
       // Vis alle fundne tracks
         tracks.forEach(track => {
-            output.innerHTML += `<p>${track.title}</p>`;
+            output.innerHTML += `<p>${track.title}— <em>${track.artist}</em></p>`;
         });
     }
 
