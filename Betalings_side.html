@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head> <header>Betalings side</header>
+</head> <header></header>
 <body>
     
 </body>
@@ -28,4 +28,122 @@
     border-radius: 6px;   /* pænere hjørner */
     cursor: pointer;
   }
+
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betaling</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: #d2caca;
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+
+    .box {
+        background: #2c2a2ad1;
+        padding: 20px;
+        margin: auto;
+        width: 350px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px #00000055;
+    }
+
+    .sang {
+        padding: 8px;
+        background: rgba(255,255,255,0.1);
+        margin-bottom: 6px;
+        border-radius: 8px;
+    }
+
+    #pris {
+        font-size: 22px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #90b6f4;
+    }
+
+    button {
+        padding: 12px 20px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #90b6f4;
+        color: white;
+    }
+
+    button:hover {
+        background: #7aa4e8;
+    }
+
+    select {
+        padding: 8px;
+        border-radius: 6px;
+        margin-top: 15px;
+        font-size: 16px;
+    }
+</style>
+
+</head>
+<body>
+
+    <h1>Betaling</h1>
+
+    <div class="box">
+        <h2>Dine valgte sange</h2>
+        <div id="liste"></div>
+
+        <p id="pris"></p>
+
+        <h3>Vælg betalingsmetode</h3>
+        <select id="betaling">
+            <option>MobilePay</option>
+            <option>Kontant</option>
+            <option>Kort</option>
+        </select>
+
+        <button onclick="bekræft()">Bekræft betaling</button>
+    </div>
+
+<script>
+// hent valgte sange fra localStorage
+const kurv = JSON.parse(localStorage.getItem("valgteSange")) || [];
+const listeDiv = document.getElementById("liste");
+
+// vis sange
+kurv.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "sang";
+    div.innerHTML = `${item.titel} — <em>${item.kunstner}</em>`;
+    listeDiv.appendChild(div);
+});
+
+// beregn pris
+let pris = 0;
+if (kurv.length === 1) pris = 2;
+if (kurv.length === 2) pris = 4;
+if (kurv.length === 3) pris = 5;
+
+document.getElementById("pris").innerHTML = `Totalpris: ${pris} kr`;
+
+function bekræft() {
+    const metode = document.getElementById("betaling").value;
+    alert(`Tak for din betaling via ${metode}!`);
+    localStorage.removeItem("valgteSange");
+    window.location.href = "index.html"; // tilbage til forsiden
+}
+</script>
+
+</body>
+</html>
+
+
 </style>
