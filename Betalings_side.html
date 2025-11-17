@@ -9,3 +9,23 @@
     
 </body>
 </html>
+
+
+<div class="tilbage-wrapper">
+  <button type="button" onclick="history.back()">← TILBAGE</button>
+</div>
+
+<style>
+  .tilbage-wrapper {
+    position: absolute;   /* gør det muligt at placere frit */
+    top: 1px;            /* afstand fra toppen */
+    left: 0px;           /* afstand fra venstre */
+  }
+
+  .tilbage-wrapper button {
+    font-size: 12px;      /* gør knappen mindre */
+    padding: 4px 8px;     /* mindre indvendig afstand */
+    border-radius: 6px;   /* pænere hjørner */
+    cursor: pointer;
+  }
+</style>

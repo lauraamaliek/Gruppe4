@@ -76,10 +76,38 @@
 </head>
 <body>
 
-<div class="sidebar">
+<div class="sidebar"> <br>
+  
   <h3>Pris:</h3>
   <p>1 sang = 2 kr. <br> 3 sange = 5 kr. <br> <br> <br> Max 3 sange pr. ordre  </p>
+
+<div class="tilbage-wrapper">
+  <button type="button" onclick="history.back()">← TILBAGE</button>
 </div>
+
+<style>
+  .tilbage-wrapper {
+    position: absolute;   /* gør det muligt at placere frit */
+    top: 1px;            /* afstand fra toppen */
+    left: 0px;           /* afstand fra venstre */
+  }
+
+  .tilbage-wrapper button {
+    font-size: 12px;      /* gør knappen mindre */
+    padding: 4px 8px;     /* mindre indvendig afstand */
+    border-radius: 6px;   /* pænere hjørner */
+    cursor: pointer;
+  }
+</style>
+  
+  
+  <button onclick="window.location.href='Betalings_side.html'">
+    Gå til betaling
+</button>
+</a>
+
+</div>
+
 
 <div id="genre-container">
   <button onclick="spilGenre('rock')">Rock</button>
