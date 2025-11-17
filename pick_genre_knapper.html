@@ -201,7 +201,120 @@
             return;
         }
         cartList.innerHTML = kurv.map(item => `🎵 ${item.titel} — <em>${item.kunstner}</em>`).join("<br>");
+    
+
+    // Ryd visningen
+    cartList.innerHTML = "";
+
+    // Gennemløb alle sange i kurven
+    kurv.forEach((item, index) => {
+        // Opret et element til hver sang
+        const div = document.createElement("div");
+        div.className = "kurv-item";
+        div.style.marginBottom = "8px";
+
+        // Tekst (titel og kunstner)
+        const tekst = document.createElement("span");
+        tekst.innerHTML = `🎵 ${item.titel} — <em>${item.kunstner}</em>`;
+
+        // Fjern-knap
+        const fjernKnap = document.createElement("button");
+        fjernKnap.textContent = "❌";
+        fjernKnap.style.marginLeft = "10px";
+        fjernKnap.style.backgroundColor = "#ff6666";
+        fjernKnap.style.color = "white";
+        fjernKnap.style.border = "none";
+        fjernKnap.style.borderRadius = "6px";
+        fjernKnap.style.cursor = "pointer";
+        fjernKnap.onclick = () => fjernFraKurv(index);
+
+        // Tilføj tekst og knap til div
+        div.appendChild(tekst);
+        div.appendChild(fjernKnap);
+
+        // Tilføj sangen til visningen
+        cartList.appendChild(div);
+    });
+}
+
+function fjernFraKurv(index) {
+    // Fjern én sang fra kurven ud fra dens placering
+    kurv.splice(index, 1);
+    opdaterKurv(); // Opdater visningen
+}
+
+function tilføjTilKurv(titel, kunstner) {
+
+    // Max 3 sange i kurven
+    if (kurv.length >= 3) {
+        alert("Du kan maks vælge 3 sange i en ordre.");
+        return;
     }
+
+    // Undgå dubletter
+    const findesAllerede = kurv.some(item => 
+        item.titel === titel && item.kunstner === kunstner
+    );
+    if (findesAllerede) {
+        alert("Denne sang er allerede i kurven.");
+        return;
+    }
+
+    // Tilføj sang
+    kurv.push({ titel, kunstner });
+    opdaterKurv();
+}
+
+function fjernFraKurv(index) {
+    kurv.splice(index, 1);
+    opdaterKurv();
+}
+
+function opdaterKurv() {
+    const cartList = document.getElementById("cart-list");
+
+    if (kurv.length === 0) {
+        cartList.innerHTML = "Ingen sange valgt endnu";
+        return;
+    }
+
+    cartList.innerHTML = "";
+
+    // Udskriv alle sange med fjern-knap
+    kurv.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "kurv-item";
+
+        const tekst = document.createElement("span");
+        tekst.innerHTML = `🎵 ${item.titel} — <em>${item.kunstner}</em>`;
+
+        const fjernKnap = document.createElement("button");
+        fjernKnap.textContent = "❌";
+        fjernKnap.onclick = () => fjernFraKurv(index);
+
+        div.appendChild(tekst);
+        div.appendChild(fjernKnap);
+
+        cartList.appendChild(div);
+    });
+
+    // 💰 BEREGN TOTALPRIS
+    const antal = kurv.length;
+    let pris = 0;
+
+    if (antal === 1) pris = 2;
+    if (antal === 2) pris = 4;
+    if (antal === 3) pris = 5;
+
+    const prisElement = document.createElement("p");
+    prisElement.style.marginTop = "10px";
+    prisElement.style.fontWeight = "bold";
+    prisElement.style.fontSize = "18px";
+    prisElement.innerHTML = `Total: <span style="color:#90b6f4">${pris} kr</span>`;
+
+    cartList.appendChild(prisElement);
+}
+
 
   </script>
 <style>
