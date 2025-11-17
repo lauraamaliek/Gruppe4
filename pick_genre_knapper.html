@@ -72,6 +72,20 @@
   text-align: center;
   color: white;
 }
+
+#betal-knap {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #90b6f4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#betal-knap:hover {
+    background-color: #7aa4e8;
+}
 </style>
 </head>
 <body>
@@ -101,9 +115,6 @@
 </style>
   
   
-  <button onclick="window.location.href='Betalings_side.html'">
-    Gå til betaling
-</button>
 </a>
 
 </div>
@@ -137,6 +148,8 @@
 <div id="kurv">
     <h3>🛒 Din kurv</h3>
     <div id="cart-list">Ingen sange valgt endnu</div>
+
+    <button id="betal-knap" onclick="gåTilBetaling()">Gå til betaling</button>
 </div>
 
   <script>
@@ -315,7 +328,17 @@ function opdaterKurv() {
     cartList.appendChild(prisElement);
 }
 
+function gåTilBetaling() {
+    if (kurv.length === 0) {
+        alert("Du skal vælge mindst én sang før du kan gå til betaling.");
+        return;
+    }
 
+    // send kurven videre til næste side
+    localStorage.setItem("valgteSange", JSON.stringify(kurv));
+
+    window.location.href = "Betalings_side.html";
+}
   </script>
 
 </body>
